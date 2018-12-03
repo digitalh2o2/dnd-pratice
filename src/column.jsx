@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Droppable} from 'react-beautiful-dnd';
-import Task from './task';
+import Task from './Task';
 
 const Container = styled.div`
   margin: 8px;
@@ -28,7 +28,11 @@ class Column extends Component {
     return (
       <Container>
         <Title>{this.props.column.title}</Title>
-        <Droppable droppableId={this.props.column.id}>
+        <Droppable droppableId={this.props.column.id}
+         type={this.props.column.id === 'column-3' ? 'done' : 'active'}
+         isDropDisabled={this.props.isDropDisbaled}
+         
+        >
           {(provided, snapshot) => (
            <TaskList
             ref={provided.innerRef}
